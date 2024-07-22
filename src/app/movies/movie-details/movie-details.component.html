@@ -1,0 +1,40 @@
+<article class="movies-details">
+  <div class="details-container">
+    <button (click)="backButton()">Back</button>
+    <div>
+      <h1>{{movieDetails.title}}</h1>
+      <div style="display: flex;">
+        <img [src]="movieDetails.poster" style="height: 264px;">
+        <p>{{movieDetails.summary}}</p>
+      </div>
+      <div>
+        <h2 style="text-align: -webkit-center;">Details</h2>
+        <div>
+          <table>
+            <tr>
+              <td class="column-one">Box Office</td>
+              <td class="column-two">${{ movieDetails.box_office }} million</td>
+            </tr>
+            <tr>
+              <td class="column-one">Budget</td>
+              <td class="column-two">${{ movieDetails.budget }} million</td>
+            </tr>
+             <tr>
+              <td class="column-one">Duration</td>
+              <td class="column-two">{{ movieDetails.duration | duration  }}</td>
+            </tr>
+            <tr>
+              <td class="column-one">Producers</td>
+              <td class="column-two">{{ movieDetails.producers.join(', ') }}</td>
+            </tr>
+            <tr>
+              <td class="column-one">Cinematographers</td>
+              <td class="column-two">{{ movieDetails.cinematographers.join(', ') }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</article>

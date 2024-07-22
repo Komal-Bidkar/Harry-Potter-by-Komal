@@ -1,0 +1,32 @@
+<article class="movies-homepage">
+  <div class="movies-container">
+    <div class="filters">
+      <h2>Filters</h2>
+      <div>
+        <label>
+          Title:
+          <input type="text" (input)="searchMovieTitle($event)" />
+      </label>
+        <label>
+          Release Year:
+          <input type="text"  (input)="searchMovieDate($event)"/>
+      </label>
+      </div>
+    </div>
+    <div class="movie-list">
+      <div *ngFor="let movie of filteredItems()" class="movie-name">
+        <div>
+        <h1>{{movie.title}}</h1>
+        <div style="display: flex;">
+          <p>Release date: {{movie.release_date }}</p>
+          <p>Budget: ${{movie.budget }} million</p>
+          <p>Duration: {{movie.duration | duration }}</p>
+        </div>
+      </div>
+      <div class="details-button">
+        <button (click)="showDetails(movie.id)">Details</button>
+      </div>
+    </div>
+    </div>
+  </div>
+</article>
