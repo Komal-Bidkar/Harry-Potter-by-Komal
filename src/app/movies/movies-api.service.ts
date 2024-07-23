@@ -1,7 +1,8 @@
-import { Inject, Injectable, signal } from '@angular/core';
-import {HttpResponse} from 'msw';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Movie } from './movies.model';
+import { MovieDetails } from './movie-details/movie-details.model';
 
 
 @Injectable({
@@ -13,10 +14,10 @@ export class MoviesApiService {
 
   constructor(private http: HttpClient) { }
 
-  getMovies(): Observable<any> {
-    return this.http.get<any>(this.movieListUrl);
+  getMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.movieListUrl);
   }
- getMovieDetails(id:string):Observable<any> {
-  return this.http.get<any>(`movies/${id}`);
+ getMovieDetails(id:string):Observable<MovieDetails> {
+  return this.http.get<MovieDetails>(`movies/${id}`);
 }
 }

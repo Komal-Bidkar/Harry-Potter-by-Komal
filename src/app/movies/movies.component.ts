@@ -23,7 +23,7 @@ export class MoviesComponent implements OnInit {
     if (this.movies().length === 0) {
       return [];
     }
-    return this.movies().filter((item: any) =>
+    return this.movies().filter((item: Movie) =>
       item.title.toLowerCase().includes(this.searchTitle().toLowerCase()) &&
       item.release_date.toLowerCase().includes(this.searchDate().toLowerCase())
     );
@@ -37,14 +37,14 @@ export class MoviesComponent implements OnInit {
 
   fetchMovies(): void {
     this.moviesService.getMovies().subscribe({
-      next: (data: any) => {
+      next: (data: Movie[]) => {
         this.movies.set(data);
       },
       error: (err) => console.error('Error fetching movies:', err)
     });
   }
 
-  showDetails(id: any) {
+  showDetails(id: string) {
     this.router.navigate(['/movies', id]);
   }
 
